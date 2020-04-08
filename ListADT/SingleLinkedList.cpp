@@ -6,6 +6,13 @@ struct node {
     node *next;
 };
 
+/*
+    Time Complexity: Insertion at beginning
+    Since we only change a few pointers
+    Each statement takes O(1) time
+    Thus insertNewNode is O(1) constant time function
+*/
+
 void insertNewNode(node *&start, int value){
     if(start==NULL) {
         // list is empty 
@@ -23,6 +30,12 @@ void insertNewNode(node *&start, int value){
         start = newNode;
     }
 }
+/*
+    Time Complexity of Deletion at beginning
+    Since this function only requires a few pointer changes 
+    Each statement takes constant time
+    Thus the complexity is O(1)
+*/
 void deleteFirstNode(node *&start){
     if(start==NULL){
         cout<<"Underflow! "; // list is empty cannot delete anymore

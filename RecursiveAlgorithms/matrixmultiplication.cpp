@@ -4,7 +4,6 @@ using namespace std;
 
 void MatrixSum(vector<vector<int>>A, vector<vector<int>>B, vector<vector<int>>C,int n){
     int i,j;
-
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             C[i][j] = A[i][j] + B[i][j];
@@ -166,9 +165,9 @@ int main(){
     int n;
     cin>>n;
 
-    vector<vector<int>> A(n);
-    vector<vector<int>> B(n);
-    vector<vector<int>> C(n);
+    vector<vector<int>> A(2);
+    vector<vector<int>> B(2);
+    vector<vector<int>> C(2);
 
     int i, j,value;
 
@@ -180,19 +179,20 @@ int main(){
             A[i].push_back(value);
         }
     }
-    cout<<"else statement 11";
+    cout<<"statement 11";
     cout<<"Enter elements of array B: "<<endl;
 
-    for(int k=0;k<n;k++){
+    int val;
+    for(int i=0;i<n;i++){
         for(j=0;j<n;j++){
             cout<<"statement 12";
-            value = 0;
-            cin>>value;
-            B[k].push_back(value);
+            cin>>val;
+            B[i].push_back(val);
+            cout<<"statement 14";
         }
         cout<<"statement 13";
     }
-    cout<<"else statement 10";
+    cout<<"statement 10";
 
     SquareMatrixMultiply(A,B,C,n);
 
