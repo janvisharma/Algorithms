@@ -1,6 +1,16 @@
 #include<iostream>
 using namespace std;
 
+/*
+    Time Complexity Analysis
+    The first for loop, loops through each element in the array 
+    Thus the upper bound (worst case) is O(n) where n is the 
+    size of the array
+
+    The rest of the statements execute O(1)
+    Thus the complexity of Linear Search is O(n)
+*/
+
 void LinearSearch(int ar[], int key, int size){
     int i,pos=-1;
     for(i=0;i<size;i++){
