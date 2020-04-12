@@ -2,26 +2,34 @@
 #include<vector>
 using namespace std;
 
+// Naive method to calculate matrix multiplications
+// Time complexity is cubic, T(n^3)
+
 void MatrixSum(vector<vector<int>>&A, vector<vector<int>>&B, vector<vector<int>>&C,int n){
     int i,j;
+    // O(n^2) since there are n^2 elements
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             C[i][j] = A[i][j] + B[i][j];
         }
     }
-    
-
 }
 
 void initZero(vector<vector<int>>&R, int n){
     int i,j,value =0;
+    // O(n^2)
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             R[i].push_back(value);
         }
     }
 }
-
+/*
+    Time complexity for merge matrix
+    Since it requires n^2 assignments
+    It loops through n^2 elements 
+    O(n^2) depends on size of matrix
+*/
 void mergeMatrix(vector<vector<int>>&C11,vector<vector<int>>&C12,vector<vector<int>>&C21,vector<vector<int>>&C22,vector<vector<int>>&C,int n){
     int i,j;
     // size of matrix C is 2n
@@ -67,10 +75,23 @@ void mergeMatrix(vector<vector<int>>&C11,vector<vector<int>>&C12,vector<vector<i
 
 }
 
+/*
+    Time Complexity of SquareMatrixMultiply recursive function
+    Divide: first a matrix is divided into 4 sub matrices 
+        This takes O(n^2)
+    Conquer: 8 recursive calls
+        Take 8T(n/2) 
+    Combine: merging of matrices takes n^2 amount of time
+
+    Total:
+        T(n) = 8T(n/2) + n^2
+        Using masters theorem we get
+        T(n) = O(n^3)    
+*/
 
 void SquareMatrixMultiply(vector<vector<int>>&A, vector<vector<int>>&B, vector<vector<int>>&C,int n){
     if(n==1){
-        C[0][0] = A[0][0]*B[0][0];
+        C[0][0] = A[0][0]*B[0][0]; // O(1) 
     }
     else {
         
