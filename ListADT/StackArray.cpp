@@ -6,7 +6,17 @@ struct list {
     int top = 0;
     int elementArray[10]; // 10 is the max size
 };
+/*
+    Stack ADT implemented using an array
+    A stack follows LIFO 
+    Deletion and Insertion can only occur at one side of the stack i.e. is top
+*/
 
+/*
+    Time Complexity of Insertion 
+    O(1) constant time
+    because we can directly assign the values given an array address
+*/
 void InsertInStack(list &L, int key){
     if(L.len==10){
         cout<<"Overflow!"<<endl;
@@ -20,12 +30,20 @@ void InsertInStack(list &L, int key){
         L.len++;
     }
 }
+/*
+    Time Complexity of Display
+    O(n) -> we need to loop through all elements in the array
+*/
 void DisplayStackElements(list L){
     int size = L.len;
     for(int i = 0;i<size;i++){
         cout<<L.elementArray[i]<<" -> ";
     }
 }
+/*
+    Time Complexity of Delete
+    O(1) because we just need to decrement the top and the length
+*/
 void DeleteElementInStack(list &L){
     if(L.len == 0){
         cout<<"Underflow!";
@@ -71,9 +89,7 @@ int main(){
              }
              case 4: { exit(0); }
                     
-         
          }
     }
-
 
 }
