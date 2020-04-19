@@ -21,8 +21,9 @@ using namespace std;
     Total number of comparisons: floor(n/k) + k - 1
 
     Worst case time complexity is: O(n^0.5) which is better than O(n) linear time!
+    
+    Important: This only works for sorted lists 
 */
-
 
 int main(){
     int size, key, ctr = 1, numOfComparisons = 0,found = -1;
