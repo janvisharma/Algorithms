@@ -90,7 +90,7 @@ int main(){
             }
         }
     }
-    cout<<endl<<"Number of comparisons: "<<numOfComparisons; // it takes lesser comparisons than naive linear search!
+    cout<<endl<<"Number of comparisons: "<<numOfComparisons<<endl; // it takes lesser comparisons than naive linear search!
     if(found!=1){
         cout<<"Element not found! ";
     }

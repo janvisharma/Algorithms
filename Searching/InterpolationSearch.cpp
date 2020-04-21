@@ -6,7 +6,7 @@ using namespace std;
     possible vicinity of the 'key' and start searching
     Assumption: the numbers are ordered and uniformly distributed
 
-    Time Complexity if O(loglogn)
+    Time Complexity is O(loglogn)
 */
 void InterpolationSearch(int Ar[], int size, int key){
     int high = size-1, low = 0, pos =-1, sIndex;
