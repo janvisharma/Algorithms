@@ -107,6 +107,20 @@ class DFSPath:
             print(path[ctr], ' -> ',end='')
             ctr = ctr + 1
         print(path[ctr],end=' ')
+    
+    def bfs(self, s):
+        visitedArray = [0]*self.vertices
+        queue = []
+        queue.append(s)
+        while(len(queue)!=0):
+            i = queue.pop(0)
+            if(visitedArray[i]!=1):
+                visitedArray[i] = 1
+                print(i,end=" ")
+                for w in self.adjListG[i]:
+                    if(visitedArray[w]!=1):
+                        queue.append(w)
+
               
 testCase = Graph(7,7)
 
@@ -117,6 +131,5 @@ testCase.addToAdjList(2,4)
 testCase.addToAdjList(5,6)
 
 testPath = DFSPath(testCase)
-testPath.hasAPath(2,3)
-testPath.hasAPath(2,4)
-testPath.hasAPath(1,6)
+
+testPath.bfs(1)
