@@ -108,6 +108,26 @@ class DFSPath:
             ctr = ctr + 1
         print(path[ctr],end=' ')
     
+    '''
+        Breadth First Traversal of a Graph 
+        First visit the starting node
+        We are going to visit the nodes which are at the same level
+        Then only will we descend to a level below 
+        So when you are at a node, we mark it as visited 
+        And explore it: visit all its neighboring nodes before descending down a level
+
+        We make use of a Queue 
+        First we append 's' the starting vertex into Queue: ['s'] {append is done at the end}
+        Inside the while loop:
+            i = queue.pop[0] { we pop at position 0 because Queue is LIFO, deletion at beginning }
+            if you have not already visited this particular vertex i then 
+                you visit it: set the bit vector as 1 to mark it as visited 
+                              print the value of i so we can see the BFS result
+                next we visit all the neighbors of 'i'
+                since we have stored the graph in an Adjacency List
+                the neighbors of i are all the vertices stored at adjListG[i] {key i}
+                so if a vertex has not been visited, we will append it to the queue
+    '''
     def bfs(self, s):
         visitedArray = [0]*self.vertices
         queue = []
