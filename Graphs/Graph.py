@@ -152,4 +152,4 @@ testCase.addToAdjList(5,6)
 
 testPath = DFSPath(testCase)
 
-testPath.bfs(1)
+testPath.bfs(2)
