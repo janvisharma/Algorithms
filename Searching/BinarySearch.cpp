@@ -16,18 +16,18 @@ using namespace std;
 */
 
 void BinarySearch(int ar[], int key, int size){
-    int mid, first=0, last=size-1;
+    int mid, first=0, last=size;
     int pos = -1;
     while(last>=first && (pos == -1)){
         mid = (first+last)/2;
+        if(key==ar[mid]){
+            pos = mid;
+        }
         if(key>ar[mid]){
             first = mid+1;
         }
         if(key<ar[mid]){
             last = mid - 1;
-        }
-        if(key==ar[mid]){
-            pos = mid;
         }
     }
     if(pos!=-1){
