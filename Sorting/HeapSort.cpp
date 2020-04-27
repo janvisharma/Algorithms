@@ -6,6 +6,10 @@ using namespace std;
     Complexity: O(nlogn) like Merge Sort & it sorts in place like Insertion Sort
 */
 
+/*
+    Linear Search to find an element in the Heap
+    O(n) time
+*/
 int LinearSearch(int Ar[], int k, int n){
     int pos=-1,i;
     for(i=0;i<n;i++){
@@ -16,7 +20,10 @@ int LinearSearch(int Ar[], int k, int n){
     return 0;
 }
 
-
+/*
+    Max_Heapify: O(h) time
+    O(logn) where n = heapsize - 1
+*/
 void max_heapify(int Ar[], int key, int size){
     int posKey = LinearSearch(Ar, key, size);
 
@@ -37,13 +44,21 @@ void max_heapify(int Ar[], int key, int size){
     }
 
 }
+/*
+    Building a Max Heap
+    O(n) linear time
+*/
 void buildMaxHeap(int Ar[], int size){
     int mid = size/2,i;
     for(i=mid;i>=0;i--){
         max_heapify(Ar, Ar[i],size);
     }
 }
-
+/*
+    Heap Sort
+    for loop: n*logn
+    O(nlogn) time
+*/
 void HeapSort(int Ar[], int size){
     buildMaxHeap(Ar, size);
     int i, max=0,temp,n = size;
