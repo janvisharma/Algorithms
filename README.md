@@ -1,6 +1,3 @@
-<html>
-<center><h1>Algorithm Analysis</h1></center>
-<hr>
+<div align="center"><h1>Algorithm Analysis</h1></div>
 <br>
-This repo contains 
-</html>
+This repository contains the algorithms I studied for COMP2119: Introduction to Data Structures and Algorithms
