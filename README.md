@@ -1,3 +1,6 @@
-<b>Algorithm Analysis</b>
+<html>
+<center><h1>Algorithm Analysis</h1></center>
+<hr>
 <br>
-Experimenting around with commonly used sorting, searching, recursive etc. algorithms.
+This repo contains 
+</html>
