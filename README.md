@@ -2,7 +2,7 @@
 <br>
 This repository contains general sorting, searching, graph implementations of algorithms. Still working on updating the ReadMe.
 <br>
-## List of algorithms covered:-
+# List of algorithms covered:-
 <br>
 # Searching
 <br>
