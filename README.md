@@ -2,8 +2,6 @@
 <br>
 This repository contains general sorting, searching, graph implementations of algorithms. Still working on updating the ReadMe.
 <br>
-<h2> List of algorithms covered:- </h2>
-<br>
 <h2> Searching </h2>
 <br>
 1. Linear Search - O(n) <br>
