@@ -5,9 +5,9 @@ using namespace std;
     Using Loop rule: 
     Outer for loop runs n times*{Inner for loop runs O(n) times}
     Rest all statements are O(1)
-    Thus complexity of Insertion Sort is O(n^2) Quadratic Time
+    Thus complexity of Selection Sort is O(n^2) Quadratic Time
 */
-void InsertionSort(int ar[], int n){
+void SelectionSort(int ar[], int n){
     int small, pos,i,k,temp; 
 
     for(i=0;i<n;i++){ 
@@ -42,7 +42,7 @@ int main(){
     for(i=0;i<size;i++){
         cin>>ar[i];
     }
-    InsertionSort(ar,size);
+    SelectionSort(ar,size);
 
     cout<<"Sorted array is: "<<endl;
     for(i=0;i<size;i++){
