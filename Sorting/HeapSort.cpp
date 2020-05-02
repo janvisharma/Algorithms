@@ -2,8 +2,10 @@
 using namespace std;
 
 /*
-    Heap Sort: Combines the good things about Insertion sort and Merge Sort
-    Complexity: O(nlogn) like Merge Sort & it sorts in place like Insertion Sort
+    Heap Sort: Combines the good things about Selection sort and Merge Sort
+    Complexity: O(nlogn)
+    We acknowledge the fact that we are performing redundant comparisons in Selection
+    sort, so to better our algorithm we use the idea of Merge Sort + Selection Sort -> Heap Sort
 */
 
 /*
