@@ -5,32 +5,32 @@ using namespace std;
 int Karatsuba(long x, long y){
     int lengthOfX = to_string(x).length();
     int lengthOfY = to_string(y).length();
-    int N;
-    if(lengthOfX>lengthOfY){
-        N = lengthOfX;
-    }
-    else{
-        N = lengthOfY;
+    if(lengthOfX<2||lengthOfY<2){
+        return x*y;
     }
 
-    N = (N/2) + (N%2);
+    long a,b,c,d;
+    long z1,z2,z3,z4;
 
-    long powerN = pow(10,N);
+    a = x/pow(10,int(lengthOfX/2));
+    b = x - a*pow(10,int(lengthOfX/2));
 
-    long a = x/powerN;
-    long b = x - (a*powerN);
+    c = y/pow(10,int(lengthOfY/2));
+    d = y - c*pow(10,int(lengthOfY/2));
 
-    long c = y/powerN;
-    long d = y - (c*powerN);
+    cout<<a<<" "<<b;
+    cout<<c<<" "<<d;
 
-    long z0 = Karatsuba(b,d);
-    long z1 = Karatsuba(a+b, c+d);
-    long z2 = Karatsuba(a,c);
+    z1 = Karatsuba(a,c);
+    z2 = Karatsuba(b,d);
+    z3 = Karatsuba(a+b,c+d);
+    z4 = z3 - z1 - z2;
 
-    return z0 + ((z1-z0-z2)*N) + (z2*(long)(pow(10,2*N)));
+    return z1*pow(10,lengthOfX)+z4*pow(10,lengthOfX/2)+z2;
 
 }
 
+// code needs to be modified to handle input of different lengths
 
 int main(){
     long x, y;
@@ -38,5 +38,5 @@ int main(){
     cin>>x>>y;
 
     long product = Karatsuba(x,y);
-    cout<<"The result is: "<<product;
+    cout<<"The result is: "<<product<<endl;
 }
