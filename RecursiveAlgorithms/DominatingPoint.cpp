@@ -4,6 +4,7 @@ struct Points{
     int x_coordinates[6];
     int y_coordinates[6];
     int rank_coordinates[6]={0};
+
 };
 // Sample input: (1,3) (2,2) (4,6) (7,1) (10,12) (13,20)
 /*  

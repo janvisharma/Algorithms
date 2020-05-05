@@ -1,11 +1,7 @@
 #include<iostream>
 #include <algorithm> 
 using namespace std;
-struct Points{
-    int x_coordinates[6];
-    int y_coordinates[6];
-    int rank_coordinates[6]={0};
-};
+
 /*  
     Problem statement:
     Consider a set S of n points on a two-dimensional plane. Each point p_i
@@ -20,83 +16,92 @@ struct Points{
 */
 // Sample input: (1,3) (2,2) (4,6) (7,1) (10,12) (13,20)
 
-
-void calcRanks(Points p, int start, int end){
-    int size = sizeof(p.rank_coordinates)/sizeof(p.rank_coordinates[0]);
-    if(start==end){
-        cout<<"base case "<<endl;
-        p.rank_coordinates[start] = 0;
-        return;
+void FindRank(int x[], int y[], int r[],int n){
+    if(n==1){
+        cout<<"base case "<<x[0]<<endl;
+        r[0] = 0;
     }
     else{
-        // cout<<"statement 1 "<<endl;
-        int mid = start+(end-start)/2;
-        Points SL,SH;
+        int mid = int(n/2);
+        int SL_x[mid], SH_x[mid], SL_y[mid], SH_y[mid], SL_r[mid], SH_r[mid];
         int i;
-        for(i=0;i<mid+1;i++){
-            SL.x_coordinates[i] = p.x_coordinates[i];
-            SL.y_coordinates[i] = p.y_coordinates[i];
-            SL.rank_coordinates[i] = p.rank_coordinates[i];
+        for(i=0;i<mid;i++){
+            SL_x[i] = x[i];
+            SL_y[i] = y[i];
+            SL_r[i] = r[i];
         }
         int j = 0;
-        for(i=mid+1;i<end+1;i++){
-            SH.x_coordinates[j] = p.x_coordinates[i];
-            SH.y_coordinates[j] = p.y_coordinates[i];
-            SH.rank_coordinates[j] = p.rank_coordinates[i];
+        for(i=mid;i<n;i++){
+            SH_x[j] = x[i];
+            SH_y[j] = y[i];
+            SH_r[j] = r[i];
             j = j + 1;
         }
-        int nL = sizeof(SL.y_coordinates)/sizeof(SL.y_coordinates[0]); 
-        cout<<"size of SL is "<<nL<<endl;
+
+        int sL = sizeof(SL_r)/sizeof(SL_r[0]);
+        FindRank(SL_x, SL_y, SL_r, sL);
+
+        int sH = sizeof(SH_r)/sizeof(SH_r[0]);
+        FindRank(SH_x, SH_y, SH_r, sH);
         
-        // cout<<"statement 2 "<<endl;
-        calcRanks(SL, 0, mid);
-        calcRanks(SH, mid+1, end);
-    
-        cout<<"statement 3 "<<endl;
+        for(i=0;i<sL;i++){
+            cout<<SL_x[i]<<" ";
+        }
+        cout<<endl;
+        for(i=0;i<sH;i++){
+            cout<<SH_x[i]<<" ";
+        }
+        cout<<endl;
+        sort(SL_y,SL_y+sL);
+        sort(SH_y,SH_y+sH);
+        cout<<"sorted y ";
+        for(i = 0;i<sL;i++){
+            cout<<SL_y[i]<<" ";
+        }
         i = 0, j = 0;
-        
-        sort(SL.y_coordinates, SL.y_coordinates+nL);
-        cout<<"statement 4 "<<endl;
-        int nH = sizeof(SH.y_coordinates)/sizeof(SH.y_coordinates[0]); 
-        sort(SH.y_coordinates,SH.y_coordinates+nH);
-        cout<<"statement 5 "<<endl;
-        while(i<mid+1){
-            cout<<"statement 6 "<<endl;
-            if(SL.y_coordinates[i]<SH.y_coordinates[j]){
-                SH.rank_coordinates[j] += SH.rank_coordinates[j];
+        while(i<sL){
+            cout<<"inside while "<<endl;
+            if(SL_y[i]<SH_y[j]){
+                cout<<"comparing "<<SL_y[i]<<" < "<<SH_y[i]<<endl;
+                cout<<"inc "<<SH_x[j]<<" "<<SH_r[j]<<" ";
+                SH_r[j] = SH_r[j] + 1;
                 j = j + 1;
             }
-            else{
-                if(SL.y_coordinates[i]>SH.y_coordinates[j]){
-                    i = i + 1;
-                    j = 0;
-                }
+            if(SL_y[i]>SH_y[j]){
+                cout<<"comparing "<<SL_y[i]<<" > "<<SH_y[i]<<endl;
+                i = i + 1;
+                j = 0;
             }
-            if(j==end+1){
+            if(j==sH){
                 i = i + 1;
                 j = 0;
             }
         }
+    cout<<"SHR is ";
+    for(i=0;i<sL;i++){
+        cout<<SH_r[i]<<" "; 
     }
+    cout<<endl;
+    }
+
+    
 }
+
 int main(){
-    Points sampleSpace;
-    cout<<"Enter coordinates of points: ";
-    for(int i=0;i<6;i++){
-        cin>>sampleSpace.x_coordinates[i];
-        cin>>sampleSpace.y_coordinates[i];
+    cout<<"enter no. of coordinates: ";
+    int n;
+    cin>>n;
+    int P_x[n], P_y[n];
+    int P_r[n] = {0};
+
+    cout<<"Enter the coordinates: ";
+    for(int i=0;i<n;i++){
+        cin>>P_x[i]>>P_y[i];
     }
 
-    cout<<"the points are: ";
-    for(int i=0;i<6;i++){
-        cout<<"( "<<sampleSpace.x_coordinates[i]<<" , ";
-        cout<<sampleSpace.y_coordinates[i]<<" )"<<endl;
-    }
-
-    calcRanks(sampleSpace,0,5);
-
-    for(int i=0;i<6;i++){
-        cout<<sampleSpace.rank_coordinates[i]<<" ";
+    FindRank(P_x,P_y,P_r,n);
+    for(int i=0;i<n;i++){
+        cout<<P_r[i]<<" ";
     }
 
 }
