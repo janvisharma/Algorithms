@@ -20,72 +20,12 @@ void FindRank(int x[], int y[], int r[],int n){
     if(n==1){
         cout<<"base case "<<x[0]<<endl;
         r[0] = 0;
+        return;
     }
     else{
-        int mid = int(n/2);
-        int SL_x[mid], SH_x[mid], SL_y[mid], SH_y[mid], SL_r[mid], SH_r[mid];
-        int i;
-        for(i=0;i<mid;i++){
-            SL_x[i] = x[i];
-            SL_y[i] = y[i];
-            SL_r[i] = r[i];
-        }
-        int j = 0;
-        for(i=mid;i<n;i++){
-            SH_x[j] = x[i];
-            SH_y[j] = y[i];
-            SH_r[j] = r[i];
-            j = j + 1;
-        }
-
-        int sL = sizeof(SL_r)/sizeof(SL_r[0]);
-        FindRank(SL_x, SL_y, SL_r, sL);
-
-        int sH = sizeof(SH_r)/sizeof(SH_r[0]);
-        FindRank(SH_x, SH_y, SH_r, sH);
         
-        for(i=0;i<sL;i++){
-            cout<<SL_x[i]<<" ";
-        }
-        cout<<endl;
-        for(i=0;i<sH;i++){
-            cout<<SH_x[i]<<" ";
-        }
-        cout<<endl;
-        sort(SL_y,SL_y+sL);
-        sort(SH_y,SH_y+sH);
-        cout<<"sorted y ";
-        for(i = 0;i<sL;i++){
-            cout<<SL_y[i]<<" ";
-        }
-        i = 0, j = 0;
-        while(i<sL){
-            cout<<"inside while "<<endl;
-            if(SL_y[i]<SH_y[j]){
-                cout<<"comparing "<<SL_y[i]<<" < "<<SH_y[i]<<endl;
-                cout<<"inc "<<SH_x[j]<<" "<<SH_r[j]<<" ";
-                SH_r[j] = SH_r[j] + 1;
-                j = j + 1;
-            }
-            if(SL_y[i]>SH_y[j]){
-                cout<<"comparing "<<SL_y[i]<<" > "<<SH_y[i]<<endl;
-                i = i + 1;
-                j = 0;
-            }
-            if(j==sH){
-                i = i + 1;
-                j = 0;
-            }
-        }
-    cout<<"SHR is ";
-    for(i=0;i<sL;i++){
-        cout<<SH_r[i]<<" "; 
-    }
-    cout<<endl;
-    }
-
-    
 }
+// use vectors instead of arrays + use partition 
 
 int main(){
     cout<<"enter no. of coordinates: ";
@@ -100,6 +40,7 @@ int main(){
     }
 
     FindRank(P_x,P_y,P_r,n);
+    // try returning an arr 
     for(int i=0;i<n;i++){
         cout<<P_r[i]<<" ";
     }
