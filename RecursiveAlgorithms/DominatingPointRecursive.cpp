@@ -24,15 +24,11 @@ void FindRank(vector<int>&x, vector<int>&y,vector<int>&r,int n){
         return;
     }
     else{
-        int sum=0;
-        for(int i=0;i<n;i++){
-            sum = sum + x[i];
-        }
-        int mid = int(sum/n);
-        stable_partition(x.begin(),x.end(),[v=mid](int n){return n<v;});
+        int mid = int(n/2);
+        // stable_partition(x.begin(),x.end(),[v=mid](int n){return n<v;});
+        // assume that we have sorted inputs by x_c
         
         vector<int> SL_x,SL_y,SH_x,SH_y,SL_r,SH_r;
-        mid = int(n/2);
 
         for(int i=0;i<mid;i++){
             SL_x.push_back(x[i]);
@@ -47,19 +43,51 @@ void FindRank(vector<int>&x, vector<int>&y,vector<int>&r,int n){
 
 
         FindRank(SL_x,SL_y,SL_r,SL_x.size());
+
         FindRank(SH_x,SH_y,SH_r,SH_x.size());
+
         int i=0, j=0;
+        cout<<"SL IS ";
+        for(i=0;i<SL_x.size();i++){
+            cout<<SL_x[i]<<" ";
+        }
+        cout<<endl<<"SH IS ";
+        for(i=0;i<SH_x.size();i++){
+            cout<<SH_x[i]<<" ";
+        }
+        cout<<endl;
+        cout<<endl;
+        cout<<"ranks before comparing point are ";
+        for(i=0;i<6;i++){
+            cout<<r[i]<<" ";
+        }
+        cout<<endl;
+
         for(i=0;i<SL_y.size();i++){
             for(j=0;j<SH_y.size();j++){
-                if(SL_y[i]<SH_y[i]){
-                    SH_r[i] += 1;
-                    cout<<SH_r[i]<<" ";
+                if(SL_y[i]<SH_y[j]){
+                    cout<<"comparing "<<SL_y[i]<<" < "<<SH_y[j]<<endl;
+                    SH_r[j] = SH_r[j] + 1;
                 }
             }
         }
+        j = 0;
+        /*
         for(i=mid;i<n;i++){
-            r[i] = SH_r[i];
+            cout<<x[i]<<" "<<y[i]<<endl;
+            cout<<SH_x[j]<<" "<<SH_y[j]<<endl;
+            r[i] = SH_r[j];
+            j = j + 1;
+            cout<<"rank "<<r[i]<<endl;
+        }*/
+        
+
+        cout<<endl;
+        cout<<"ranks at this point are ";
+        for(i=0;i<6;i++){
+            cout<<r[i]<<" ";
         }
+        cout<<endl;
 
     }    
 }
