@@ -15,3 +15,22 @@ This repository contains general sorting, searching, graph implementations of al
 2. Selection Sort - O(n^2) {sorts in place}<br>
 3. Merge Sort - O(nlogn)<br>
 4. Heap Sort - O(nlogn) {sorts in place}<br>
+<br>
+<h2> Graphs </h2>
+<br>
+(assuming we are using adjacency list representation of graphs)
+1. Breadth First Seach O(V+E)
+2. Depth First Search O(V+E)
+<br>
+<h2> List ADT </h2>
+<br>
+1. Arrays as Lists
+2. Arrays as Queues
+3. Arrays as Stacks
+4. Singly Linked Lists
+<br>
+<h2> Recursive Algorithms </h2>
+<br>
+1. Strassen's Matrix Multiplication 
+2. Karatsuba Multiplication
+3. Dominating Point
